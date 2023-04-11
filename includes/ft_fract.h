@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/12 00:03:01 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:51:12 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ enum		e_x_event_masks
 void		ft_destroyer(t_mdata *dat);
 int			ft_mdata_init(t_mdata *dat);
 int			key_press(int keycode, t_mdata *dat);
+int			mouse_event(int keycode, t_mdata *dat);
 
 #endif

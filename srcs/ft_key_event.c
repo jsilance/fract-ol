@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 00:02:32 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/12 00:02:51 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/12 00:55:52 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,18 @@
 
 int	key_press(int keycode, t_mdata *dat)
 {
-	(void)dat;
 	ft_printf("uwu [%i]\n", keycode);
 	if (keycode == XK_Escape)
 		mlx_loop_end(dat->mlx_ptr);
+	return (0);
+}
+
+int	mouse_event(int keycode, t_mdata *dat)
+{
+	(void)dat;
+	if (keycode == 4)
+		ft_printf("up: [%d]\n", keycode);
+	else if (keycode == 5)
+		ft_printf("down: [%d]\n", keycode);
 	return (0);
 }
