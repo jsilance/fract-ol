@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/12 00:51:12 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/13 04:05:30 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_printf.h"
 # include "mlx.h"
 # include <math.h>
+# include <stdio.h>
 
 # define XK_LATIN1
 # define XK_MISCELLANY
@@ -32,8 +33,10 @@ typedef struct s_mdata
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*img;
 
 	t_vect	size;
+	float	zoom;
 }			t_mdata;
 
 enum		e_x_events
@@ -105,9 +108,27 @@ enum		e_x_event_masks
 	XOWNER_GRAB_BUTTON_MASK = (1L << 24),
 };
 
+# ifndef MRED
+#  define MRED (255 << 16)
+# endif
+# ifndef MGREEN
+#  define MGREEN (255 << 8)
+# endif
+# ifndef MBLUE
+#  define MBLUE 255
+# endif
+# ifndef MWHITE
+#  define MWHITE (MRED | MGREEN | MBLUE)
+# endif
+
+float		g_zoom;
+
 void		ft_destroyer(t_mdata *dat);
 int			ft_mdata_init(t_mdata *dat);
 int			key_press(int keycode, t_mdata *dat);
 int			mouse_event(int keycode, t_mdata *dat);
+
+int			ft_put_image(t_mdata *dat);
+float		ft_map(int val, int max, int newmin, int newmax);
 
 #endif

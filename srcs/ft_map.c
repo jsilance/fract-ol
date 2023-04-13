@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 21:15:58 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/13 03:31:10 by jusilanc         ###   ########.fr       */
+/*   Created: 2023/04/13 01:43:14 by jusilanc          #+#    #+#             */
+/*   Updated: 2023/04/13 04:05:20 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fract.h"
 
-int	main(void)
+float	ft_map(int val, int max, int newmin, int newmax)
 {
-	t_mdata	dat;
+	float	div;
 
-	ft_mdata_init(&dat);
-	mlx_key_hook(dat.win_ptr, key_press, (void *)&dat);
-	mlx_hook(dat.win_ptr, XCLIENT_MESSAGE, XSTRUCTURE_NOTIFY_MASK, mlx_loop,
-			dat.mlx_ptr);
-	mlx_mouse_hook(dat.win_ptr, mouse_event, (void *)&dat);
-	// mlx_loop_hook(dat.mlx_ptr);
-	mlx_loop_hook(dat.mlx_ptr, ft_put_image, (void *)&dat);
-	// ft_put_image(&dat);
-	mlx_loop(dat.mlx_ptr);
-	ft_destroyer(&dat);
-	return (0);
+	div = (float)max / (float)((float)newmax - (float)newmin);
+	return ((float)((float)val / (float)div) + (float)newmin);
 }
