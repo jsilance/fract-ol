@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/13 04:05:30 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/15 18:43:58 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_mdata
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img;
+	char	*img_addr;
+	int		bpixel;
+	int		size_line;
+	int		endian;
 
 	t_vect	size;
 	float	zoom;
@@ -130,5 +134,8 @@ int			mouse_event(int keycode, t_mdata *dat);
 
 int			ft_put_image(t_mdata *dat);
 float		ft_map(int val, int max, int newmin, int newmax);
+float		ft_fmap(float val, float max, float newmin, float newmax);
+
+void		ft_pixels_set(t_mdata *dat, int x, int y, int color);
 
 #endif

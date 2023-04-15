@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_pxl_set.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 01:43:14 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/15 18:43:54 by jusilanc         ###   ########.fr       */
+/*   Created: 2023/04/15 18:19:07 by jusilanc          #+#    #+#             */
+/*   Updated: 2023/04/15 18:26:18 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fract.h"
 
-float	ft_map(int val, int max, int newmin, int newmax)
+void	ft_pixels_set(t_mdata *dat, int x, int y, int color)
 {
-	float	div;
+	char	*dst;
 
-	div = (float)max / (float)((float)newmax - (float)newmin);
-	return ((float)((float)val / (float)div) + (float)newmin);
-}
-
-float	ft_fmap(float val, float max, float newmin, float newmax)
-{
-	float	div;
-
-	div = (float)max / (float)((float)newmax - (float)newmin);
-	return ((float)((float)val / (float)div) + (float)newmin);
+	dst = dat->img_addr + (y * dat->size_line + x * (dat->bpixel / 8));
+	*(unsigned int *)dst = color;
 }

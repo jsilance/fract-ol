@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 23:11:34 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/13 04:11:31 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/15 19:34:10 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,19 @@ int	ft_fractal(t_mdata *dat, int x, int y)
 	float	ca;
 	float	cb;
 	int		n;
+	float	mouse_x;
+	float	mouse_y;
 
-	a = ft_map(x, dat->size.x, -g_zoom, g_zoom);
-	b = ft_map(y, dat->size.y, -g_zoom, g_zoom);
+	mouse_x = -0.7451639;
+	mouse_y = 0.12655;
+	a = ft_fmap(x / g_zoom, dat->size.x / g_zoom, -g_zoom + mouse_x, g_zoom
+			+ mouse_x);
+	b = ft_fmap(y / g_zoom, dat->size.y / g_zoom, -g_zoom + mouse_y, g_zoom
+			+ mouse_y);
 	n = 0;
 	ca = a;
 	cb = b;
-	while (n < 100)
+	while (n < 400)
 	{
 		aa = a * a - b * b;
 		bb = 2 * a * b;
@@ -48,11 +54,6 @@ int	ft_put_image(t_mdata *dat)
 	int	color;
 	int	n;
 
-	// int		pixel_bits;
-	// int		line_bytes;
-	// int		endian;
-	// char	*buf;
-	// buf = mlx_get_data_addr(dat->img, &pixel_bits, &line_bytes, &endian);
 	x = 0;
 	mlx_clear_window(dat->mlx_ptr, dat->win_ptr);
 	while (x < dat->size.x)
@@ -61,19 +62,15 @@ int	ft_put_image(t_mdata *dat)
 		while (y < dat->size.y)
 		{
 			n = ft_fractal(dat, x, y);
-			bright = ft_map(n, 100, 0, 255);
-			if (n == 100)
+			bright = ft_map(n, 400, 0, 255);
+			if (n == 400)
 				bright = 0;
 			color = bright << 16 | bright << 8 | bright;
-			// buf[x + y * dat->size.y + 0] = (color >> 24);
-			// buf[x + y * dat->size.y + 1] = (color >> 16) & 0xFF;
-			// buf[x + y * dat->size.y + 2] = (color >> 8) & 0xFF;
-			// buf[x + y * dat->size.y + 3] = (color)&0xFF;
-			mlx_pixel_put(dat->mlx_ptr, dat->win_ptr, x, y, color);
+			ft_pixels_set(dat, x, y, color);
 			y++;
 		}
 		x++;
 	}
-	// mlx_put_image_to_window(dat->mlx_ptr, dat->win_ptr, dat->img, 0, 0);
+	mlx_put_image_to_window(dat->mlx_ptr, dat->win_ptr, dat->img, 0, 0);
 	return (0);
 }

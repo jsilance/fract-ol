@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 00:02:32 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/13 03:31:50 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/15 19:02:27 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	mouse_event(int keycode, t_mdata *dat)
 	if (keycode == 4)
 	{
 		printf("up: [%d] zoom[%f]\n", keycode, g_zoom);
-		g_zoom -= 0.1;
+		g_zoom /= 1.1;
 	}
 	else if (keycode == 5)
 	{
-		g_zoom += 0.1;
+		g_zoom *= 1.1;
 		printf("down: [%d] zoom[%f]\n", keycode, g_zoom);
 	}
 	return (38);
