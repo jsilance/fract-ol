@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fract.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/15 18:43:58 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/18 13:35:58 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 
 # define XK_LATIN1
 # define XK_MISCELLANY
-# include <X11/X.h>
-# include <X11/keysymdef.h>
 
 typedef struct s_vect
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_image.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 23:11:34 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/15 19:34:10 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:04:49 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_fractal(t_mdata *dat, int x, int y)
 	n = 0;
 	ca = a;
 	cb = b;
-	while (n < 400)
+	while (n < 500)
 	{
 		aa = a * a - b * b;
 		bb = 2 * a * b;
@@ -62,8 +62,8 @@ int	ft_put_image(t_mdata *dat)
 		while (y < dat->size.y)
 		{
 			n = ft_fractal(dat, x, y);
-			bright = ft_map(n, 400, 0, 255);
-			if (n == 400)
+			bright = ft_map(n, 500, 0, 255);
+			if (n == 500)
 				bright = 0;
 			color = bright << 16 | bright << 8 | bright;
 			ft_pixels_set(dat, x, y, color);

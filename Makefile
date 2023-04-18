@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+         #
+#    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/15 18:30:05 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/18 13:52:34 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = $(addprefix srcs/, $(SRCS))
 
 CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${MINILIBX}/ -I ${FT_PRINTF}/includes/
 
-LDFLAGS = ${FT_PRINTF}/libft.a ${MINILIBX}/libmlx_Linux.a -lm -lXext -lX11
+LDFLAGS = ${FT_PRINTF}/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 OBJ = ${SRC:.c=.o}
 
@@ -31,7 +31,7 @@ ${NAME}: libx ft_printf ${OBJ}
 all: ${NAME}
 
 %.o: %.c
-		@cc ${CFLAGS} -c $< ${LDFLAGS} -o ${<:.c=.o}
+		@cc ${CFLAGS} -c $< -o ${<:.c=.o}
 
 clean:
 		@rm -rf ${OBJ}

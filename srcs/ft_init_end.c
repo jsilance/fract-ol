@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_end.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 23:59:03 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/15 19:31:30 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/18 14:08:30 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	ft_destroyer(t_mdata *dat)
 {
 	mlx_destroy_window(dat->mlx_ptr, dat->win_ptr);
-	mlx_destroy_display(dat->mlx_ptr);
+	// mlx_destroy_display(dat->mlx_ptr);
+	exit(0);
 }
 
 int	ft_mdata_init(t_mdata *dat)
