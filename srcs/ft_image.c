@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 23:11:34 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/18 14:04:49 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:43:01 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_fractal(t_mdata *dat, int x, int y)
 	n = 0;
 	ca = a;
 	cb = b;
-	while (n < 500)
+	while (n < 300)
 	{
 		aa = a * a - b * b;
 		bb = 2 * a * b;
@@ -45,14 +45,32 @@ int	ft_fractal(t_mdata *dat, int x, int y)
 	}
 	return (n);
 }
+int	ft_iter_to_hsv(int n, int max_iter)
+{
+	int	new_n;
+	int	color;
+
+	new_n = ft_map(n, max_iter, 0, 359);
+	color = (255 << 16) + (255 << 8) + (255);
+	if (n > 240)
+		color = ((int)ft_map(new_n - 240, 119, 0, 255)) + ((int)ft_map(new_n
+					- 240, 119, 255, 0) << 8);
+	else if (n > 120 && n < 240)
+		color = ((int)ft_map(new_n - 120, 119, 255, 0) << 16)
+			+ ((int)ft_map(new_n - 120, 119, 0, 255) << 8);
+	else
+		color = ((int)ft_map(new_n, 119, 255, 0)) + ((int)ft_map(new_n, 119, 0,
+					255) << 16);
+	return (color);
+}
 
 int	ft_put_image(t_mdata *dat)
 {
 	int	x;
 	int	y;
-	int	bright;
 	int	color;
 	int	n;
+	int	bright;
 
 	x = 0;
 	mlx_clear_window(dat->mlx_ptr, dat->win_ptr);
@@ -62,10 +80,13 @@ int	ft_put_image(t_mdata *dat)
 		while (y < dat->size.y)
 		{
 			n = ft_fractal(dat, x, y);
-			bright = ft_map(n, 500, 0, 255);
-			if (n == 500)
+			bright = ft_map(n, 300, 0, 255);
+			if (n == 300)
 				bright = 0;
-			color = bright << 16 | bright << 8 | bright;
+			// color = bright << 16 | bright << 8 | bright;
+			color = ft_iter_to_hsv(n, 300) * bright;
+			// if (n == 500)
+			// 	color = 0;
 			ft_pixels_set(dat, x, y, color);
 			y++;
 		}

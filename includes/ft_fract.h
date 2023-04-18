@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/18 13:35:58 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/18 18:56:46 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_mdata
 
 	t_vect	size;
 	float	zoom;
+	int		mos_x;
+	int		mos_y;
 }			t_mdata;
 
 enum		e_x_events

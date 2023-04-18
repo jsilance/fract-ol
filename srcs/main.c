@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:15:58 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/13 03:31:10 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:31:56 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void)
 	mlx_hook(dat.win_ptr, XCLIENT_MESSAGE, XSTRUCTURE_NOTIFY_MASK, mlx_loop,
 			dat.mlx_ptr);
 	mlx_mouse_hook(dat.win_ptr, mouse_event, (void *)&dat);
+	// mlx_mouse_get_pos(dat.win_ptr, &dat.mos_x, &dat.mos_y);
 	// mlx_loop_hook(dat.mlx_ptr);
 	mlx_loop_hook(dat.mlx_ptr, ft_put_image, (void *)&dat);
 	// ft_put_image(&dat);

@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/18 13:52:34 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/18 19:09:31 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ SRCS = main.c ft_key_event.c ft_init_end.c ft_image.c ft_map.c ft_pxl_set.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
-CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${MINILIBX}/ -I ${FT_PRINTF}/includes/
+CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${MINILIBX}/ -I ${FT_PRINTF}/includes/ -Imlx
 
-LDFLAGS = ${FT_PRINTF}/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit
+LDFLAGS = ${FT_PRINTF}/libft.a -lmlx -Lmlx -framework OpenGL -framework AppKit
 
 OBJ = ${SRC:.c=.o}
 
