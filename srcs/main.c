@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:15:58 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/18 19:31:56 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/19 15:40:17 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	mlx_mouse_hook(dat.win_ptr, mouse_event, (void *)&dat);
 	// mlx_mouse_get_pos(dat.win_ptr, &dat.mos_x, &dat.mos_y);
 	// mlx_loop_hook(dat.mlx_ptr);
+	// test
 	mlx_loop_hook(dat.mlx_ptr, ft_put_image, (void *)&dat);
 	// ft_put_image(&dat);
 	mlx_loop(dat.mlx_ptr);
