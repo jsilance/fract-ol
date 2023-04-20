@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 01:43:14 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/15 18:43:54 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:05:32 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fract.h"
 
-float	ft_map(int val, int max, int newmin, int newmax)
+double	ft_map(int val, int max, int newmin, int newmax)
 {
-	float	div;
+	double	div;
 
-	div = (float)max / (float)((float)newmax - (float)newmin);
-	return ((float)((float)val / (float)div) + (float)newmin);
+	div = (double)max / (double)((double)newmax - (double)newmin);
+	return ((double)((double)val / (double)div) + (double)newmin);
 }
 
-float	ft_fmap(float val, float max, float newmin, float newmax)
+double	ft_fmap(double val, double max, double newmin, double newmax)
 {
-	float	div;
+	double	div;
 
-	div = (float)max / (float)((float)newmax - (float)newmin);
-	return ((float)((float)val / (float)div) + (float)newmin);
+	div = (double)max / (double)((double)newmax - (double)newmin);
+	return ((double)((double)val / (double)div) + (double)newmin);
 }

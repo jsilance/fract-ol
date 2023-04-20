@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/18 18:56:46 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:50:07 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ typedef struct s_mdata
 	int		endian;
 
 	t_vect	size;
-	float	zoom;
-	int		mos_x;
-	int		mos_y;
+	double	zoom;
+	double	mos_x;
+	double	mos_y;
 }			t_mdata;
 
 enum		e_x_events
@@ -125,16 +125,14 @@ enum		e_x_event_masks
 #  define MWHITE (MRED | MGREEN | MBLUE)
 # endif
 
-float		g_zoom;
-
 void		ft_destroyer(t_mdata *dat);
 int			ft_mdata_init(t_mdata *dat);
 int			key_press(int keycode, t_mdata *dat);
-int			mouse_event(int keycode, t_mdata *dat);
+int			mouse_event(int keycode, int x, int y, t_mdata *dat);
 
 int			ft_put_image(t_mdata *dat);
-float		ft_map(int val, int max, int newmin, int newmax);
-float		ft_fmap(float val, float max, float newmin, float newmax);
+double		ft_map(int val, int max, int newmin, int newmax);
+double		ft_fmap(double val, double max, double newmin, double newmax);
 
 void		ft_pixels_set(t_mdata *dat, int x, int y, int color);
 

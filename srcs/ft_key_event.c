@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 00:02:32 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/18 19:14:08 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:46:20 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ int	key_press(int keycode, t_mdata *dat)
 {
 	ft_printf("uwu [%i]\n", keycode);
 	if (keycode == 53)
-	{
 		ft_destroyer(dat);
-		// mlx_loop(dat->mlx_ptr);
-	}
 	return (0);
 }
 
-int	mouse_event(int keycode, t_mdata *dat)
+int	mouse_event(int keycode, int x, int y, t_mdata *dat)
 {
-	(void)dat;
+	(void)y;
 	if (keycode == 4)
 	{
-		printf("up: [%d] zoom[%f]\n", keycode, g_zoom);
-		g_zoom /= 1.2;
+		// printf("up: [%d] zoom[%f]\n", keycode, g_zoom);
+		dat->zoom /= 1.2;
 	}
 	else if (keycode == 5)
 	{
-		g_zoom *= 1.2;
-		printf("down: [%d] zoom[%f]\n", keycode, g_zoom);
+		dat->zoom *= 1.2;
+		// printf("down: [%d] zoom[%f]\n", keycode, g_zoom);
 	}
-	ft_printf("keycode [%d] x[d] y[d]\n", keycode);
+	dat->mos_x = ft_fmap(x, dat->size.x, -dat->zoom, dat->zoom) / 1;
+	dat->mos_y = ft_fmap(y, dat->size.y, -dat->zoom, dat->zoom) / 1;
+	printf("keycode [%d]\tx [%f]\ty [%f]\tzoom [%f]\n", keycode, dat->mos_x,
+			dat->mos_y, dat->zoom);
 	return (38);
 }

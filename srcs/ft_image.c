@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 23:11:34 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/18 18:43:01 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 14:35:23 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 int	ft_fractal(t_mdata *dat, int x, int y)
 {
-	float	a;
-	float	b;
-	float	aa;
-	float	bb;
-	float	ca;
-	float	cb;
+	double	a;
+	double	b;
+	double	aa;
+	double	bb;
+	double	ca;
+	double	cb;
 	int		n;
-	float	mouse_x;
-	float	mouse_y;
 
-	mouse_x = -0.7451639;
-	mouse_y = 0.12655;
-	a = ft_fmap(x / g_zoom, dat->size.x / g_zoom, -g_zoom + mouse_x, g_zoom
-			+ mouse_x);
-	b = ft_fmap(y / g_zoom, dat->size.y / g_zoom, -g_zoom + mouse_y, g_zoom
-			+ mouse_y);
+	a = ft_fmap(x / dat->zoom, dat->size.x / dat->zoom, -dat->zoom + dat->mos_x,
+			dat->zoom + dat->mos_x);
+	b = ft_fmap(y / dat->zoom, dat->size.y / dat->zoom, -dat->zoom + dat->mos_y,
+			dat->zoom + dat->mos_y);
 	n = 0;
 	ca = a;
 	cb = b;

@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/18 19:09:31 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/20 13:23:56 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = $(addprefix srcs/, $(SRCS))
 
 CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${MINILIBX}/ -I ${FT_PRINTF}/includes/ -Imlx
 
-LDFLAGS = ${FT_PRINTF}/libft.a -lmlx -Lmlx -framework OpenGL -framework AppKit
+LDFLAGS = ${FT_PRINTF}/libft.a ${MINILIBX}/libmlx.a -lmlx -framework OpenGL -framework AppKit
 
 OBJ = ${SRC:.c=.o}
 
