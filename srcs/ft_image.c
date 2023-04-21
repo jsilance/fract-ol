@@ -6,47 +6,28 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 23:11:34 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/20 14:35:23 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:56:20 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fract.h"
 
-int	ft_fractal(t_mdata *dat, int x, int y)
+static int	ft_hsv_shifter(int n, int shift)
 {
-	double	a;
-	double	b;
-	double	aa;
-	double	bb;
-	double	ca;
-	double	cb;
-	int		n;
-
-	a = ft_fmap(x / dat->zoom, dat->size.x / dat->zoom, -dat->zoom + dat->mos_x,
-			dat->zoom + dat->mos_x);
-	b = ft_fmap(y / dat->zoom, dat->size.y / dat->zoom, -dat->zoom + dat->mos_y,
-			dat->zoom + dat->mos_y);
-	n = 0;
-	ca = a;
-	cb = b;
-	while (n < 300)
-	{
-		aa = a * a - b * b;
-		bb = 2 * a * b;
-		a = aa + ca;
-		b = bb + cb;
-		if (fabs(a + b) > 16)
-			break ;
-		n++;
-	}
+	n += shift;
+	if (n > 359)
+		return (n - 360);
+	if (n < 0)
+		return (n + 360);
 	return (n);
 }
-int	ft_iter_to_hsv(int n, int max_iter)
+
+int	ft_iter_to_hsv(int n, int max_iter, int shift)
 {
 	int	new_n;
 	int	color;
 
-	new_n = ft_map(n, max_iter, 0, 359);
+	new_n = ft_hsv_shifter(ft_map(n, max_iter, 0, 359), shift);
 	color = (255 << 16) + (255 << 8) + (255);
 	if (n > 240)
 		color = ((int)ft_map(new_n - 240, 119, 0, 255)) + ((int)ft_map(new_n
@@ -60,33 +41,38 @@ int	ft_iter_to_hsv(int n, int max_iter)
 	return (color);
 }
 
+static int	ft_fract_selector(t_mdata *dat, t_vect v)
+{
+	if (dat->wich_f == 1)
+		return (ft_mfractal(dat, v.x, v.y));
+	if (dat->wich_f == 2)
+		return (ft_jfractal(dat, v.x, v.y));
+	return (0);
+}
+
 int	ft_put_image(t_mdata *dat)
 {
-	int	x;
-	int	y;
-	int	color;
-	int	n;
-	int	bright;
+	t_vect	size;
+	int		color;
+	int		n;
+	int		bright;
 
-	x = 0;
+	size = (t_vect){0, 0};
 	mlx_clear_window(dat->mlx_ptr, dat->win_ptr);
-	while (x < dat->size.x)
+	while (size.x < dat->size.x)
 	{
-		y = 0;
-		while (y < dat->size.y)
+		size.y = 0;
+		while (size.y < dat->size.y)
 		{
-			n = ft_fractal(dat, x, y);
+			n = ft_fract_selector(dat, size);
 			bright = ft_map(n, 300, 0, 255);
 			if (n == 300)
 				bright = 0;
-			// color = bright << 16 | bright << 8 | bright;
-			color = ft_iter_to_hsv(n, 300) * bright;
-			// if (n == 500)
-			// 	color = 0;
-			ft_pixels_set(dat, x, y, color);
-			y++;
+			color = ft_iter_to_hsv(n, 1000, dat->color_shift) * bright;
+			ft_pixels_set(dat, size.x, size.y, color);
+			size.y++;
 		}
-		x++;
+		size.x++;
 	}
 	mlx_put_image_to_window(dat->mlx_ptr, dat->win_ptr, dat->img, 0, 0);
 	return (0);

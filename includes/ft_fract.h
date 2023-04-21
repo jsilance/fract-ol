@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/20 13:50:07 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/21 17:56:55 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,22 @@ typedef struct s_mdata
 	double	zoom;
 	double	mos_x;
 	double	mos_y;
+	int		color_shift;
+	int		wich_f;
+	double	j_mod_x;
+	double	j_mod_y;
 }			t_mdata;
+
+typedef struct s_mfract
+{
+	double	a;
+	double	b;
+	double	aa;
+	double	bb;
+	double	twoab;
+	double	ca;
+	double	cb;
+}			t_mfract;
 
 enum		e_x_events
 {
@@ -135,5 +150,9 @@ double		ft_map(int val, int max, int newmin, int newmax);
 double		ft_fmap(double val, double max, double newmin, double newmax);
 
 void		ft_pixels_set(t_mdata *dat, int x, int y, int color);
+double		ft_atod(char *str);
+
+int			ft_mfractal(t_mdata *dat, int x, int y);
+int			ft_jfractal(t_mdata *dat, int x, int y);
 
 #endif

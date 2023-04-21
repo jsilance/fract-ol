@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/20 13:23:56 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/21 17:57:14 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = fractol
 MINILIBX = minilibx
 FT_PRINTF = ft_printf
 
-SRCS = main.c ft_key_event.c ft_init_end.c ft_image.c ft_map.c ft_pxl_set.c
+SRCS = main.c ft_key_event.c ft_init_end.c ft_image.c ft_map.c ft_pxl_set.c ft_fractal_mj.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
