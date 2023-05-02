@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/21 17:57:14 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/05/02 11:58:22 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,13 @@ SRCS = main.c ft_key_event.c ft_init_end.c ft_image.c ft_map.c ft_pxl_set.c ft_f
 
 SRC = $(addprefix srcs/, $(SRCS))
 
-CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${MINILIBX}/ -I ${FT_PRINTF}/includes/ -Imlx
+CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${FT_PRINTF}/includes/ -Imlx
 
-LDFLAGS = ${FT_PRINTF}/libft.a ${MINILIBX}/libmlx.a -lmlx -framework OpenGL -framework AppKit
+LDFLAGS = ${FT_PRINTF}/libft.a -lmlx -framework OpenGL -framework AppKit
 
 OBJ = ${SRC:.c=.o}
 
-${NAME}: libx ft_printf ${OBJ}
+${NAME}: ft_printf ${OBJ}
 		cc ${CFLAGS} ${OBJ} ${LDFLAGS} -o ${NAME}
 
 all: ${NAME}
@@ -36,7 +36,6 @@ all: ${NAME}
 clean:
 		@rm -rf ${OBJ}
 		@make -C ${FT_PRINTF} clean
-		@make -C ${MINILIBX} clean
 
 fclean: clean
 		@rm -rf ${NAME}
@@ -45,13 +44,10 @@ fclean: clean
 re: fclean all
 		clear
 
-libx:
-		@make -C ${MINILIBX} all
-
 ft_printf:
 		@make -C ${FT_PRINTF} all
 
 test: all
 		./${NAME}
 
-.PHONY: all re clean fclean libx ft_printf test
+.PHONY: all re clean fclean ft_printf test

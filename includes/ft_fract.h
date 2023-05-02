@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 21:17:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/21 17:56:55 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:59:11 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_FRACT_H
 
 # include "ft_printf.h"
-# include "mlx.h"
 # include <math.h>
+# include <mlx.h>
 # include <stdio.h>
 
 # define XK_LATIN1
